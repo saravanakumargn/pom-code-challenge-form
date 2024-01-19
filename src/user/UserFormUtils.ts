@@ -1,9 +1,10 @@
-import { SubmitHandler } from "react-hook-form";
 import { UserFormData } from "../types/User";
+import { Dispatch, SetStateAction } from "react";
 
 export enum UserFormFields {
   FirstName = "firstName",
   LastName = "lastName",
+  FavoriteFilm = "favoriteFilm",
 }
 
 export function getUserFormDefaultValues() {
@@ -13,8 +14,18 @@ export function getUserFormDefaultValues() {
   };
 }
 
-export const onUserFormSubmit: SubmitHandler<UserFormData> = (
-  data: UserFormData
+export const onUserFormSubmit = async (
+  data: UserFormData,
+  setIsFormSubmitting: Dispatch<SetStateAction<boolean>>
 ) => {
-  console.log(data);
+  try {
+    setIsFormSubmitting(true);
+    alert(JSON.stringify(data, null, 2));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsFormSubmitting(false);
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };

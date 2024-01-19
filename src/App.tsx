@@ -1,15 +1,14 @@
-import UserForm from './user/UserForm';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import UserForm from "./user/UserForm";
+
+const queryClient = new QueryClient();
 
 function App() {
-
   return (
-
-    <UserForm />
-    // <div className='app'>
-
-    // <UserForm />
-    // </div>
-  )
+    <QueryClientProvider client={queryClient}>
+      <UserForm />
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;

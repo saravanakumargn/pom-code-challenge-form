@@ -5,6 +5,7 @@ html, body {
   background: #fff;
 }
 
-.app {
-  margin: 100px
+.row-padding {
+  padding-left: 16px;
+  padding-right: 16px;
 }
